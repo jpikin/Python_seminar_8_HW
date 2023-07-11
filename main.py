@@ -42,6 +42,32 @@ def find_by_name(phone_book, name):
             break
 
 
+def get_search_number():
+    a = input("Введите номер: ")
+    if a.isdigit():
+        return int(a)
+    else:
+        print("Вы ввели не номер, попробуйте еще раз")
+        return get_search_number() 
+
+
+def find_by_number(phone_book, number):
+    for i in phone_book:
+        for key in i.keys():
+            print(f'|{key.rjust(20)}|', end='')
+        print()    
+        print('----------------------------------------------------------------------------------------')
+        break
+    for i in phone_book:
+        for key, value in i.items():
+            if key == 'Телефон':
+                if int(value) == number:
+                    print(value)
+                    for value in i.values():
+                        print(f'|{value.rjust(20)}|', end='')
+            
+            
+
 
 def work_with_phonebook():
     choice = show_menu()
@@ -54,9 +80,9 @@ def work_with_phonebook():
         elif choice == 2:
             name = get_search_name()
             find_by_name(phone_book, name)
-        # elif choice == 3:
-        #     number = get_search_number()
-        #     print(find_by_number(phone_book, number))
+        elif choice == 3:
+            number = get_search_number()
+            find_by_number(phone_book, number)
         # elif choice == 4:
         #     user_data = get_new_user()
         #     add_user(phone_book, user_data)
