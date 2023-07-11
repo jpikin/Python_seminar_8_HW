@@ -12,7 +12,36 @@ def show_menu():
 def print_result(phone_book):
 
     for i in phone_book:
-        print(i)
+        for key in i.keys():
+            print(f'|{key.rjust(20)}|', end='')
+        print()    
+        print('----------------------------------------------------------------------------------------')
+        break
+    for i in phone_book:
+        for value in i.values():
+            print(f'|{value.rjust(20)}|', end='')
+        print()
+
+
+def get_search_name():
+    return input("Введите фамилию для поиска: ")
+
+def find_by_name(phone_book, name):
+    for i in phone_book:
+        for key in i.keys():
+            print(f'|{key.rjust(20)}|', end='')
+        print()    
+        print('----------------------------------------------------------------------------------------')
+        break
+    for i in phone_book:
+        for value in i.values():
+            if name in value:
+                for value in i.values():
+                    print(f'|{value.rjust(20)}|', end='')
+            print()
+            break
+                            
+
 
 def work_with_phonebook():
     choice = show_menu()
@@ -22,9 +51,9 @@ def work_with_phonebook():
     while (choice != 6):
         if choice == 1:
             print_result(phone_book)
-        # elif choice == 2:
-        #     name = get_search_name()
-        #     print(find_by_name(phone_book, name))
+        elif choice == 2:
+            name = get_search_name()
+            find_by_name(phone_book, name)
         # elif choice == 3:
         #     number = get_search_number()
         #     print(find_by_number(phone_book, number))
