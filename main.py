@@ -35,12 +35,12 @@ def find_by_name(phone_book, name):
         break
     for i in phone_book:
         for value in i.values():
-            if name in value:
+            if name.lower() in value.lower():
                 for value in i.values():
                     print(f'|{value.rjust(20)}|', end='')
             print()
             break
-                            
+
 
 
 def work_with_phonebook():
